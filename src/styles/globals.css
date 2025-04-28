@@ -1,0 +1,215 @@
+/* src/styles/globals.css */
+
+/* Tailwind base, components, and utilities */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Root variables for light and dark themes */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #0ea5e9; /* Primary color for highlights */
+  --secondary: #22c55e; /* Secondary color for accents */
+  --muted: #71717a; /* Muted text or subtle details */
+  --accent: #10b981; /* Accent color */
+  --primary-gradient-start: #3b82f6; /* Blue */
+  --primary-gradient-end: #9333ea; /* Purple */
+  --secondary-gradient-start: #9333ea; /* Purple */
+  --secondary-gradient-end: #10b981; /* Teal */
+  --border-radius: 0.5rem; /* Default border radius */
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Default box shadow */
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --primary: #3b82f6; /* Adjusted primary for dark mode */
+  --secondary: #10b981; /* Adjusted secondary for dark mode */
+  --muted: #b3b3b3; /* Slightly lighter muted color for better readability */
+  --accent: #34d399; /* Light teal */
+  --primary-gradient-start: #60a5fa; /* Light blue */
+  --primary-gradient-end: #a78bfa; /* Light purple */
+  --secondary-gradient-start: #a78bfa; /* Light purple */
+  --secondary-gradient-end: #34d399; /* Light teal */
+  --border-radius: 0.5rem; /* Consistent border radius */
+  --box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1); /* Dark shadow */
+}
+
+/* Global body styling */
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: 'Inter', 'Roboto', Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  transition: color 0.3s, background 0.3s;
+}
+
+/* Links */
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: var(--secondary);
+}
+
+a:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+/* Define Custom Utilities */
+@layer utilities {
+  .rounded-custom {
+    border-radius: var(--border-radius);
+  }
+
+  .shadow-custom {
+    box-shadow: var(--box-shadow);
+  }
+
+  .bg-background {
+    background-color: var(--background);
+  }
+
+  .text-foreground {
+    color: var(--foreground);
+  }
+}
+
+/* Reusable Card Component */
+.card {
+  @apply bg-white dark:bg-gray-700 rounded-custom shadow-custom p-6 transition-transform transform hover:scale-105 hover:shadow-xl cursor-pointer;
+}
+
+.card:hover {
+  /* Additional hover effects can be added here if needed */
+}
+
+/* Reusable Feature Card */
+.feature-card {
+  @apply p-6 bg-gray-100 dark:bg-gray-800 rounded-custom shadow-custom transition-colors duration-300;
+}
+
+.feature-card:hover {
+  /* Optional: Add hover effects specific to feature cards */
+}
+
+/* Hero Section */
+.hero {
+  @apply text-center mb-12;
+}
+
+.hero-title {
+  @apply text-4xl font-bold mb-4 text-gray-800 dark:text-gray-100;
+}
+
+.hero-description {
+  @apply text-lg mb-8 text-gray-600 dark:text-gray-300;
+}
+
+/* Buttons */
+.button-primary {
+  @apply bg-primary text-white px-4 py-2 rounded-md hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-primary transition-colors duration-300;
+}
+
+.button-primary:hover {
+  /* Additional hover effects can be added here if needed */
+}
+
+.button-primary:focus {
+  /* Additional focus effects can be added here if needed */
+}
+
+/* Carousel Items */
+.carousel-item {
+  @apply flex justify-center items-center text-center bg-white dark:bg-gray-700 rounded-custom shadow-custom p-6 transition-transform transform hover:translate-y-[-10px];
+}
+
+.carousel-item:hover {
+  /* Additional hover effects can be added here if needed */
+}
+
+/* globals.css */
+html {
+  transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
+}
+
+/* Search Bar */
+.search-bar {
+  @apply w-full max-w-md mx-auto my-4 px-2 py-1 border border-muted rounded-custom bg-background text-foreground shadow-custom transition-shadow;
+}
+
+.search-bar:focus {
+  @apply shadow-lg outline-none;
+}
+
+/* Post Container */
+.post {
+  /* Removed: hover:scale-102 */
+  @apply bg-background rounded-custom shadow-custom p-4 mb-4 transition-transform transform;
+}
+
+.post:hover {
+  /* Additional hover effects can be added here if needed */
+}
+
+/* Glassmorphism */
+.glass {
+  @apply bg-white/20 dark:bg-gray-800/20 backdrop-blur-lg rounded-custom shadow-custom;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* General Spacing */
+.section {
+  @apply py-16 px-8;
+}
+
+.section-title {
+  @apply mb-8 text-2xl font-bold text-center;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .card, .carousel-item, .feature-card {
+    @apply p-4;
+  }
+
+  .section-title {
+    @apply text-xl;
+  }
+
+  .search-bar {
+    @apply max-w-sm;
+  }
+
+  .hero-title {
+    @apply text-3xl;
+  }
+
+  .hero-description {
+    @apply text-base;
+  }
+}
